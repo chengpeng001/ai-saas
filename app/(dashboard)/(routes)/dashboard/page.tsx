@@ -1,88 +1,75 @@
 "use client";
 
-import {
-	ArrowRight,
-	Code,
-	ImageIcon,
-	MessageSquare,
-	Music,
-	VideoIcon,
-} from "lucide-react";
-import { useRouter } from "next/navigation";
-
-import { Card } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-
-const tools = [
-	{
-		label: "Conversation",
-		icon: MessageSquare,
-		color: "text-violet-500",
-		bgColor: "bg-violet-500/10",
-		href: "/conversation",
-	},
-	{
-		label: "Music Generation",
-		icon: Music,
-		color: "text-emerald-500",
-		bgColor: "bg-emerald-500/10",
-		href: "/music",
-	},
-	{
-		label: "Image Generation",
-		icon: ImageIcon,
-		color: "text-pink-700",
-		bgColor: "bg-pink-700/10",
-		href: "/image",
-	},
-	{
-		label: "Video Generation",
-		icon: VideoIcon,
-		color: "text-orange-700",
-		bgColor: "bg-orange-700/10",
-		href: "/video",
-	},
-	{
-		label: "Code Generation",
-		icon: Code,
-		color: "text-green-700",
-		bgColor: "bg-green-700/10",
-		href: "/code",
-	},
-];
+import { useUser } from '@clerk/nextjs';
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
+import { FolderKanban, Store, Play } from 'lucide-react';
 
 const DashboardPage = () => {
-	const router = useRouter();
+	const { user } = useUser();
+
+	const recentProjects = [
+		{ id: 1, title: 'Business Landing Page', type: 'Website', lastEdited: '2 days ago', icon: FolderKanban },
+		{ id: 2, title: 'Product Promo Video', type: 'Video', lastEdited: 'yesterday', icon: Play },
+	];
+
+	const marketplaceItems = [
+		{ id: 1, title: 'AI Website Builder', description: 'Generate a complete website from a description', credits: 750, icon: Store },
+		{ id: 2, title: 'AI Image Generator', description: 'Create high-quality images with text prompts', credits: 50, icon: Store },
+		{ id: 3, title: 'Video Generator', description: 'Create videos from text', credits: 300, icon: Store },
+	];
 
 	return (
-		<div>
-			<div className="mb-8 space-y-4">
-				<h2 className="text-2xl md:text-4xl font-bold text-center">
-					Explore the power of AI
+		<div className="p-6 space-y-8">
+			<div className="flex justify-between items-center">
+				<h2 className="text-3xl font-bold text-foreground">
+					Welcome back, {user?.firstName || 'User'}!
 				</h2>
-				<p className="text-muted-foreground font-light text-sm md:text-lg text-center">
-					Prometheus is a platform that allows you to generate music, videos,
-					and code using the power of AI.
-				</p>
+				<Button variant="secondary">
+					Create New Project
+				</Button>
 			</div>
-			<div className="px-4 md:px-20 lg:px-32 space-y-4">
-				{tools.map((tool) => (
-					<Card
-						onClick={() => router.push(tool.href)}
-						key={tool.href}
-						className={
-							"p-4 border-black/5 flex items-center justify-between hover:shadow-md transition cursor-pointer"
-						}
-					>
-						<div className="flex items-center gap-x-4">
-							<div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>
-								<tool.icon className={cn("w-8 h-8", tool.color)} />
-							</div>
-							<div className="font-semibold">{tool.label}</div>
-						</div>
-						<ArrowRight className="w-5 h-5" />
-					</Card>
-				))}
+
+			<div>
+				<h3 className="text-xl font-semibold mb-4 text-foreground">Recent Projects</h3>
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+					{recentProjects.map((project) => (
+						<Card key={project.id}>
+							<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+								<CardTitle className="text-sm font-medium">{project.title}</CardTitle>
+								<project.icon className="h-4 w-4 text-muted-foreground" />
+							</CardHeader>
+							<CardContent>
+								<div className="text-xs text-muted-foreground">
+									Last edited {project.lastEdited}
+								</div>
+							</CardContent>
+						</Card>
+					))}
+				</div>
+			</div>
+
+			<div>
+				<h3 className="text-xl font-semibold mb-4 text-foreground">Marketplace</h3>
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+					{marketplaceItems.map((item) => (
+						<Card key={item.id}>
+							<CardHeader>
+								<CardTitle className="flex items-center gap-2 text-sm font-medium">
+									<item.icon className="h-4 w-4 text-muted-foreground" />
+									{item.title}
+								</CardTitle>
+							</CardHeader>
+							<CardContent>
+								<p className="text-xs text-muted-foreground mb-2">{item.description}</p>
+								<span className="text-sm font-semibold">{item.credits} Credits</span>
+							</CardContent>
+							<CardFooter>
+								<Button variant="outline" size="sm" className="w-full">Try</Button>
+							</CardFooter>
+						</Card>
+					))}
+				</div>
 			</div>
 		</div>
 	);

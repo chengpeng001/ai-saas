@@ -10,67 +10,69 @@ body,
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Light Mode - Navy/Red/White */
+    --background: 0 0% 100%; /* White */
+    --foreground: 222 50% 22%; /* Deep Navy Text */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 96%; /* Slightly off-white */
+    --muted-foreground: 222 50% 35%; /* Slightly lighter navy */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 222 50% 22%; /* Deep Navy Text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 222 50% 22%; /* Deep Navy Text */
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 0 0% 89%; /* Light outline gray */
+    --input: 0 0% 89%; /* Light outline gray */
 
-    --primary: 248 90% 66%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 222 50% 22%; /* Deep Navy */
+    --primary-foreground: 0 0% 100%; /* White Text */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 6 82% 58%; /* Warm Red */
+    --secondary-foreground: 0 0% 100%; /* White Text */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 6 82% 58%; /* Warm Red */
+    --accent-foreground: 0 0% 100%; /* White Text */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%; /* Default Red - Keep for destructive actions */
+    --destructive-foreground: 0 0% 100%; /* White Text */
 
-    --ring: 215 20.2% 65.1%;
+    --ring: 6 82% 58%; /* Warm Red focus ring */
 
-    --radius: 0.5rem;
+    --radius: 0.5rem; /* Keep original radius */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark Mode - Navy/Red/White */
+    --background: 222 50% 22%; /* Deep Navy BG */
+    --foreground: 0 0% 100%; /* White Text */
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 222 50% 28%; /* Slightly off-navy */
+    --muted-foreground: 0 0% 70%; /* Light gray text */
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 222 50% 25%; /* Slightly lighter navy */
+    --popover-foreground: 0 0% 100%; /* White Text */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 222 50% 25%; /* Slightly lighter navy */
+    --card-foreground: 0 0% 100%; /* White Text */
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
+    --border: 222 50% 30%; /* Darker navy border */
+    --input: 222 50% 30%; /* Darker navy border */
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 0 0% 100%; /* White Primary elements */
+    --primary-foreground: 222 50% 22%; /* Deep Navy Text */
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 6 82% 58%; /* Warm Red */
+    --secondary-foreground: 0 0% 100%; /* White Text */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 6 82% 65%; /* Slightly lighter red */
+    --accent-foreground: 0 0% 100%; /* White Text */
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 85.7% 97.3%;
+    --destructive: 0 70% 50%; /* Adjusted Red */
+    --destructive-foreground: 0 0% 100%; /* White Text */
 
-    --ring: 217.2 32.6% 17.5%;
+    --ring: 6 82% 65%; /* Lighter red focus ring */
   }
 }
 
